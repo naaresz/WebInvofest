@@ -1,40 +1,47 @@
-import { Home, Trophy, Users, Laptop, Mic, User } from "lucide-react";
+import { Home, Trophy, Presentation, Laptop, Mic, UserCircle } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
-const Header = () => {
-  const menu = [
-    { label: "Beranda", icon: Home },
-    { label: "Competition", icon: Trophy },
-    { label: "Seminar", icon: Users },
-    { label: "Workshop", icon: Laptop },
-    { label: "Talkshow", icon: Mic },
+
+
+export const Header: React.FC = () => {
+  
+  const activeStyle = "text-[#76153C]";
+  const defaultStyle = "text-slate-600 hover:text-[#76153C]";
+
+  const menuItems = [
+    { label: "Beranda", href: "/", icon: <Home size={18} /> },
+    { label: "Competition", href: "/competition", icon: <Trophy size={18} /> },
+    { label: "Seminar", href: "/seminar", icon: <Presentation size={18} /> },
+    { label: "Workshop", href: "/workshop", icon: <Laptop size={18} /> },
+    { label: "Talkshow", href: "/talkshow", icon: <Mic size={18} /> },
+    { label: "Login", href: "/login", icon: <UserCircle size={18} />  },
   ];
 
   return (
-    <header className="bg-white shadow-sm px-8 py-3">
+    <header className=" bg-white px-6 py-3 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-
-        {/* Logo */}
-        <img
-          src="https://www.invofest-harkatnegeri.com/assets/nav-logo.png"
-          className="h-14"
-        />
-
-        {/* Menu */}
-        <div className="flex items-center gap-6">
-          {menu.map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <div key={i} className="flex items-center gap-2 text-gray-600 hover:text-red-700 cursor-pointer">
-                <Icon size={18} />
-                <span>{item.label}</span>
-              </div>
-            );
-          })}
-
-          {/* Profile Icon */}
-          <User size={22} className="text-gray-600 cursor-pointer" />
+        <div className="logo">
+          <img
+            src="https://www.invofest-harkatnegeri.com/assets/nav-logo.png"
+            alt="logo"
+            className="h-13"
+          />
         </div>
+        <div className="nav flex gap-1">
+          {menuItems.map((item) => (
+            <NavLink
+              to={item.href}
+              className={({ isActive }) =>
+                `flex items-center gap-2 px-2 py-2 font-medium transition-all duration-200 
+                  ${isActive ? activeStyle : defaultStyle}`
+              }
+            >
 
+              {item.icon && <span className="w-5 h-5">{item.icon}</span>}
+              <span>{item.label}</span>
+            </NavLink>
+            ))}
+        </div>
       </div>
     </header>
   );

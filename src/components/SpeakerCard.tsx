@@ -12,21 +12,22 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
     jabatan,
 }) => {
     return (
-        <div className="cursor-pointer flex flex-col items-center gap-4 group">
+        <div className="flex flex-col items-center group w-full max-w-112.5 mx-auto pt-4 transition-all">
             <div className="relative h-1/3 z-1">
-
-            <img 
-            src={foto} 
-            alt={nama} 
-            className="h-64 w-64 rounded-full border-10 border-red-900 mx-auto group-hover:scale-105 transition-transform duration-300 object-cover"
-            />
+                <div className="mx-auto w-fit transition-all duration-300 group-hover:scale-110">
+                    <img 
+                        src={foto} 
+                        alt={nama} 
+                        className="
+                            h-48 w-48 md:h-60 md:w-60 rounded-full border-10 border-[#561530] object-cover"
+                    />
+                </div>
             </div>
 
-            <div className="cursor-pointer flex flex-col items-center h-2/3 border-4 border-red-900 w-full p-4 mt-[60px] rounded-lg relative py-10 shadow-[0_15px_30px_rgba(127,29,29,0.7)] hover:shadow-[0_25px_50px_rgba(127,29,29,0.9)] transition-all duration-300">
-                
-                <div className="absolute bottom-0 px-4 py-6 rounded-lg w-full h-full flex flex-col items-center gap-2 group-hover:gc-red-200 backdrop-blur-sm transition-all duration-300"></div>
-                <div className="absolute left-0 right-0 bottom-0 items-center justify-center p-4 flex flex-col gap-2">
-                    <h3 className="text-2xl text-red-900 font-bold">{nama}</h3>
+            <div className="bg-white h-2/3 border-4 border-[#76153C] w-full pt-24 rounded-lg shadow-[0_8px_12px_rgba(86,21,48,0.7)] hover:bg-[#FFEDF3] transition-all duration-300">
+        
+                <div className="flex flex-col items-center gap-2">
+                    <h3 className="text-2xl text-[#76153C] font-bold">{nama}</h3>
                     <p className="text-lg text-gray-600 text-center">{materi}</p>
                     <p className="text-lg text-gray-600 text-center">{jabatan}</p>
                 </div>
